@@ -1,5 +1,5 @@
-import HomeItemList from "@/components/HomeItemList";
-import Navbar from "@/components/Navbar";
+import HomeItemList from '@/components/HomeItemList'
+import Navbar from '@/components/Navbar'
 
 export default function Home() {
   return (
@@ -7,5 +7,5 @@ export default function Home() {
       <Navbar />
       <HomeItemList />
     </main>
-  );
+  )
 }

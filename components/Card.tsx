@@ -1,16 +1,16 @@
-import { Product } from "@/types/product";
-import Image from "next/image";
-import React from "react";
+import { Product } from '@/types/product'
+import Image from 'next/image'
+import React from 'react'
 
 type CardProps = {
-  title: string;
-  description: string;
-  image: string;
-  href: string;
-  price: number;
-  rating: number;
-  discount: number;
-};
+  title: string
+  description: string
+  image: string
+  href: string
+  price: number
+  rating: number
+  discount: number
+}
 
 export default function Card({
   name,
@@ -63,5 +63,5 @@ export default function Card({
         </a>
       </div>
     </div>
-  );
+  )
 }

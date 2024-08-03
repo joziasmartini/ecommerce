@@ -6,35 +6,35 @@ import {
   Popover,
   PopoverButton,
   PopoverPanel,
-} from "@headlessui/react";
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+} from '@headlessui/react'
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import {
   Bars3Icon,
   BellIcon,
   UserIcon,
   XMarkIcon,
-} from "@heroicons/react/24/outline";
-import Image from "next/image";
+} from '@heroicons/react/24/outline'
+import Image from 'next/image'
 
 const user = {
-  name: "Chelsea Hagon",
-  email: "chelsea.hagon@example.com",
-};
+  name: 'Chelsea Hagon',
+  email: 'chelsea.hagon@example.com',
+}
 
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
-  { name: "Calendar", href: "#", current: false },
-  { name: "Teams", href: "#", current: false },
-  { name: "Directory", href: "#", current: false },
-];
+  { name: 'Dashboard', href: '#', current: true },
+  { name: 'Calendar', href: '#', current: false },
+  { name: 'Teams', href: '#', current: false },
+  { name: 'Directory', href: '#', current: false },
+]
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
+  { name: 'Your Profile', href: '#' },
+  { name: 'Settings', href: '#' },
+  { name: 'Sign out', href: '#' },
+]
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ')
 }
 
 export default function Navbar() {
@@ -136,12 +136,12 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                aria-current={item.current ? "page" : undefined}
+                aria-current={item.current ? 'page' : undefined}
                 className={classNames(
                   item.current
-                    ? "bg-gray-100 text-gray-900"
-                    : "hover:bg-gray-50",
-                  "block rounded-md px-3 py-2 text-base font-medium"
+                    ? 'bg-gray-100 text-gray-900'
+                    : 'hover:bg-gray-50',
+                  'block rounded-md px-3 py-2 text-base font-medium',
                 )}
               >
                 {item.name}
@@ -185,5 +185,5 @@ export default function Navbar() {
         </PopoverPanel>
       </Popover>
     </>
-  );
+  )
 }
