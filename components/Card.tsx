@@ -1,4 +1,5 @@
 import { Product } from '@/types/product'
+import { StarIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 import React from 'react'
 
@@ -22,45 +23,39 @@ export default function Card({
   discount,
 }: Product & { href: string }) {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="group max-w-sm bg-white dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <Image
-          className="rounded-t-lg"
-          src="/docs/images/blog/image-1.jpg"
+          className="rounded-t-lg w-full h-64 object-cover rounded-lg group-hover:scale-105 transition-all duration-200 "
+          src={'https://images.unsplash.com/photo-1542452255191-c85a98f2c5d1'}
           alt=""
+          width={1000}
+          height={1000}
         />
       </a>
       <div className="p-5">
         <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Noteworthy technology acquisitions 2021
+          <h5 className="mb-2 text-2xl group-hover:text-orange-600 transition-all duration-300 font-bold tracking-tight text-gray-900 dark:text-white">
+            {name}
           </h5>
         </a>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
-        </p>
-        <a
-          href="#"
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Read more
-          <svg
-            className="rtl:rotate-180 w-3.5 h-3.5 ms-2"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 14 10"
-          >
-            <path
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M1 5h12m0 0L9 1m4 4L9 9"
-            />
-          </svg>
-        </a>
+        <div className="flex mb-4">
+          {new Array(rating)
+            .fill(rating)
+            .map((i) => i)
+            .map((_, index) => (
+              <StarIcon
+                key={index}
+                className="h-4 w-4 mr-0.5 text-orange-500"
+              />
+            ))}
+        </div>
+        <div className="flex">
+          <span className="mr-2 font-medium">R$ {price}</span>
+          <span className="text-neutral-300 line-through">
+            R$ {price - discount}
+          </span>
+        </div>
       </div>
     </div>
   )

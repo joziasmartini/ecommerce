@@ -7,30 +7,36 @@ import {
   PopoverButton,
   PopoverPanel,
 } from '@headlessui/react'
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import {
   Bars3Icon,
-  BellIcon,
+  ShoppingCartIcon,
   UserIcon,
   XMarkIcon,
-} from '@heroicons/react/24/outline'
-import Image from 'next/image'
+  MagnifyingGlassIcon,
+} from '@heroicons/react/24/solid'
+import ProductsDropdown from './ProductsDropdown'
 
 const user = {
-  name: 'Chelsea Hagon',
-  email: 'chelsea.hagon@example.com',
+  name: 'Jozias Martini',
+  email: 'jozias.martini@email.com',
 }
 
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
-  { name: 'Calendar', href: '#', current: false },
-  { name: 'Teams', href: '#', current: false },
-  { name: 'Directory', href: '#', current: false },
+  { name: 'Calendário', href: '#', current: false },
+  { name: 'Times', href: '#', current: false },
+  { name: 'Diretório', href: '#', current: false },
 ]
+
 const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
+  { name: 'Meu perfil', href: '#' },
+  { name: 'Configurações', href: '#' },
+  { name: 'Sair', href: '#' },
+]
+
+const cartNavigation = [
+  { name: 'Meu carrinho', href: '#' },
+  { name: 'Compras anteriores', href: '#' },
 ]
 
 function classNames(...classes: string[]) {
@@ -49,14 +55,19 @@ export default function Navbar() {
           <div className="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
             <div className="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
               <div className="flex flex-shrink-0 items-center">
-                <a href="#">COSMETICOS&CO</a>
+                <a href="#" className="font-bold tracking-tighter">
+                  COSMETICOS&CO
+                </a>
               </div>
             </div>
-            <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-8">
+            <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-2">
+              <ProductsDropdown />
+            </div>
+            <div className="min-w-0 flex-1 md:px-8 lg:px-0 xl:col-span-5">
               <div className="flex items-center px-6 py-4 md:mx-auto md:max-w-3xl lg:mx-0 lg:max-w-none xl:px-0">
                 <div className="w-full">
                   <label htmlFor="search" className="sr-only">
-                    Search
+                    O que está buscando hoje?
                   </label>
                   <div className="relative">
                     <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -69,8 +80,8 @@ export default function Navbar() {
                       id="search"
                       name="search"
                       type="search"
-                      placeholder="Search"
-                      className="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                      placeholder="O que está buscando hoje?"
+                      className="block w-full rounded-full border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-500 sm:text-sm sm:leading-6"
                     />
                   </div>
                 </div>
@@ -78,7 +89,7 @@ export default function Navbar() {
             </div>
             <div className="flex items-center md:absolute md:inset-y-0 md:right-0 lg:hidden">
               {/* Mobile menu button */}
-              <PopoverButton className="group relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+              <PopoverButton className="group relative -mx-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500">
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon
@@ -91,23 +102,43 @@ export default function Navbar() {
                 />
               </PopoverButton>
             </div>
-            <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-2">
-              <button
-                type="button"
-                className="relative ml-5 flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                <span className="absolute -inset-1.5" />
-                <span className="sr-only">View notifications</span>
-                <BellIcon aria-hidden="true" className="h-6 w-6" />
-              </button>
-
-              {/* Profile dropdown */}
-              <Menu as="div" className="relative ml-5 flex-shrink-0">
+            <div className="hidden lg:flex lg:items-center lg:justify-end xl:col-span-3">
+              {/* Cart dropdown */}
+              <Menu as="div" className="relative flex-shrink-0">
                 <div>
-                  <MenuButton className="relative flex rounded-full bg-neutral-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                  <MenuButton className="relative flex rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 text-gray-900 focus:ring-orange-500 focus:ring-offset-2">
                     <span className="absolute -inset-1.5" />
                     <span className="sr-only">Open user menu</span>
-                    <UserIcon aria-hidden="true" className="h-10 w-10 p-2" />
+                    <ShoppingCartIcon
+                      aria-hidden="true"
+                      className="h-9 w-9 p-2"
+                    />
+                  </MenuButton>
+                </div>
+                <MenuItems
+                  transition
+                  className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
+                >
+                  {cartNavigation.map((item) => (
+                    <MenuItem key={item.name}>
+                      <a
+                        href={item.href}
+                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                      >
+                        {item.name}
+                      </a>
+                    </MenuItem>
+                  ))}
+                </MenuItems>
+              </Menu>
+
+              {/* Profile dropdown */}
+              <Menu as="div" className="relative ml-3 flex-shrink-0">
+                <div>
+                  <MenuButton className="relative flex rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 text-gray-900 focus:ring-orange-500 focus:ring-offset-2">
+                    <span className="absolute -inset-1.5" />
+                    <span className="sr-only">Open user menu</span>
+                    <UserIcon aria-hidden="true" className="h-9 w-9 p-2" />
                   </MenuButton>
                 </div>
                 <MenuItems
@@ -163,11 +194,11 @@ export default function Navbar() {
               </div>
               <button
                 type="button"
-                className="relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                className="relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-900 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
               >
                 <span className="absolute -inset-1.5" />
                 <span className="sr-only">View notifications</span>
-                <BellIcon aria-hidden="true" className="h-6 w-6" />
+                <ShoppingCartIcon aria-hidden="true" className="h-6 w-6" />
               </button>
             </div>
             <div className="mx-auto mt-3 max-w-3xl space-y-1 px-2 sm:px-4">
