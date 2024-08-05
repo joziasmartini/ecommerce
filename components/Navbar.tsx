@@ -21,13 +21,6 @@ const user = {
   email: 'jozias.martini@email.com',
 }
 
-const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Calendário', href: '#', current: false },
-  { name: 'Times', href: '#', current: false },
-  { name: 'Diretório', href: '#', current: false },
-]
-
 const userNavigation = [
   { name: 'Meu perfil', href: '#' },
   { name: 'Configurações', href: '#' },
@@ -55,7 +48,7 @@ export default function Navbar() {
           <div className="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
             <div className="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
               <div className="flex flex-shrink-0 items-center">
-                <a href="#" className="font-bold tracking-tighter">
+                <a href="#" className="font-bold tracking-tighter text-xl">
                   COSMETICOS&CO
                 </a>
               </div>
@@ -162,23 +155,6 @@ export default function Navbar() {
         </div>
 
         <PopoverPanel as="nav" aria-label="Global" className="lg:hidden">
-          <div className="mx-auto max-w-3xl space-y-1 px-2 pb-3 pt-2 sm:px-4">
-            {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                aria-current={item.current ? 'page' : undefined}
-                className={classNames(
-                  item.current
-                    ? 'bg-gray-100 text-gray-900'
-                    : 'hover:bg-gray-50',
-                  'block rounded-md px-3 py-2 text-base font-medium',
-                )}
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
           <div className="border-t border-gray-200 pb-3 pt-4">
             <div className="mx-auto flex max-w-3xl items-center px-4 sm:px-6">
               <div className="flex-shrink-0">
