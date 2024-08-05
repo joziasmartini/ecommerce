@@ -26,16 +26,16 @@ export default function Card({
     <div className="group max-w-sm bg-white dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
         <Image
-          className="rounded-t-lg w-full h-64 object-cover rounded-lg group-hover:scale-105 transition-all duration-200 "
+          className="rounded-t-lg w-full h-64 object-cover rounded-lg transition-all duration-200 group-hover:filter group-hover:brightness-105"
           src={'https://images.unsplash.com/photo-1542452255191-c85a98f2c5d1'}
           alt=""
           width={1000}
           height={1000}
         />
       </a>
-      <div className="p-5">
+      <div className="my-5">
         <a href="#">
-          <h5 className="mb-2 text-2xl group-hover:text-orange-600 transition-all duration-300 font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-2xl transition-all duration-300 font-bold tracking-tight text-gray-900 dark:text-white">
             {name}
           </h5>
         </a>
