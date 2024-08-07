@@ -32,11 +32,11 @@ const cartNavigation = [
   { name: 'Compras anteriores', href: '#' },
 ]
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ')
+type NavbarProps = {
+  setSearchQuery: (query: string) => void
 }
 
-export default function Navbar() {
+export default function Navbar({ setSearchQuery }: NavbarProps) {
   return (
     <>
       {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
@@ -73,6 +73,7 @@ export default function Navbar() {
                       id="search"
                       name="search"
                       type="search"
+                      onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="O que está buscando hoje?"
                       className="block w-full rounded-full border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-orange-500 sm:text-sm sm:leading-6"
                     />
