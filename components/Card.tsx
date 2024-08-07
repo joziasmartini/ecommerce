@@ -3,14 +3,8 @@ import { StarIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
 import React from 'react'
 
-type CardProps = {
-  title: string
-  description: string
-  image: string
+type CardProps = Product & {
   href: string
-  price: number
-  rating: number
-  discount: number
 }
 
 export default function Card({
@@ -21,9 +15,11 @@ export default function Card({
   price,
   rating,
   discount,
-}: Product & { href: string }) {
+}: CardProps) {
   return (
-    <div className="group max-w-sm bg-white dark:bg-gray-800 dark:border-gray-700">
+    <div
+      className={`group max-w-sm bg-white dark:bg-gray-800 dark:border-gray-700`}
+    >
       <a href="#">
         <Image
           className="rounded-t-lg w-full h-64 object-cover rounded-lg transition-all duration-200 group-hover:filter group-hover:brightness-105"
