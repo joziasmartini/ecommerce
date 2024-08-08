@@ -190,7 +190,7 @@ export default function Navbar({ setSearchQuery }: NavbarProps) {
                   className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900 cursor-pointer"
                   onClick={() => router.push(item.href)}
                 >
-                  li{item.name}
+                  {item.name}
                 </li>
               ))}
             </div>
