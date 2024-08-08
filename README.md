@@ -20,13 +20,14 @@ Ecommerce platform for a technical test.
 
 ### To do
 
-- [ ] Home page navbar
-- [ ] Home page hero section
-- [ ] Home page product list
-- [ ] Card component for products
+- [x] Home page navbar
+- [x] Home page hero section
+- [x] Home page product list
+- [x] Card component for products
+- [x] Product list and hooks
+- [x] Create and connect database
 - [ ] Load more button and its logic
 - [ ] Cart page and its components
 - [ ] Cart context and logic
-- [ ] Product list and hooks
-- [ ] Create and connect database
+- [ ] Search context and logic
 - [ ] Adjust responsiveness
