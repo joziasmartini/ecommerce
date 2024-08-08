@@ -1,8 +1,6 @@
 import { Product } from '@/types/product'
 import Card from './Card'
-import { lineWobble } from 'ldrs'
-
-lineWobble.register()
+import { LineWobble } from '@uiball/loaders'
 
 type HomeItemListProps = {
   items: Product[]
@@ -21,13 +19,7 @@ export default function HomeItemList({ items, isLoading }: HomeItemListProps) {
       </p>
       {isLoading ? (
         <div className="flex justify-center mt-20 mb-40">
-          <l-line-wobble
-            size="80"
-            stroke="5"
-            bg-opacity="0.1"
-            speed="1.75"
-            color="#ea580c"
-          ></l-line-wobble>
+          <LineWobble size={64} speed={1.5} color="#ea580c" />
         </div>
       ) : (
         <section className="grid lg:grid-cols-4 md:grid-cols-2 p-8 lg:w-[90%] gap-8 mx-auto">

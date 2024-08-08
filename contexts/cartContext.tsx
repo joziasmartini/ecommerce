@@ -16,7 +16,6 @@ const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   const addProduct = (product: Product) => {
     setProducts([...products, product])
-    console.log('Produto adicionado.')
   }
 
   const removeProduct = (id: number) => {

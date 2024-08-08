@@ -8,8 +8,6 @@ import Navbar from '@/components/Navbar'
 export default function Page() {
   const { products, addProduct, removeProduct } = useCartContext()
 
-  console.log('Produtos no contexto: ', products)
-
   return (
     <>
       <Navbar setSearchQuery={() => {}} />
@@ -31,7 +29,7 @@ export default function Page() {
             )}
           </div>
         </div>
-        <div className="md:w-1/3 w-full p-4 bg-gray-100 rounded-lg">
+        <div className="md:w-1/3 w-full p-4 bg-white border border-gray-100 rounded-lg mt-16">
           <CartPrice />
         </div>
       </div>
