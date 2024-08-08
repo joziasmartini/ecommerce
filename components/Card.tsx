@@ -1,3 +1,4 @@
+import { useCartContext } from '@/contexts/cartContext'
 import { Product } from '@/types/product'
 import { StarIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
@@ -8,14 +9,16 @@ type CardProps = Product & {
 }
 
 export default function Card({
+  id,
   name,
   description,
   image,
-  href,
   price,
   rating,
   discount,
 }: CardProps) {
+  const { addProduct } = useCartContext()
+
   return (
     <div
       className={`group max-w-sm bg-white dark:bg-gray-800 dark:border-gray-700`}
@@ -51,6 +54,24 @@ export default function Card({
           <span className="text-neutral-300 line-through">
             R$ {price - discount}
           </span>
+        </div>
+        <div>
+          <button
+            onClick={() =>
+              addProduct({
+                id,
+                name,
+                price,
+                image,
+                description,
+                rating,
+                discount,
+              })
+            }
+            className="mt-4 bg-primary-500 text-orange-600 text-sm bg-orange-200 hover:bg-orange-600 hover:text-white transition-all duration-300 px-4 py-2 rounded-lg"
+          >
+            Adicionar ao carrinho
+          </button>
         </div>
       </div>
     </div>
