@@ -6,18 +6,22 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db-push": "prisma db push",
+    "db-seed": "prisma db seed"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
     "@prisma/client": "^5.17.0",
     "@tailwindcss/forms": "^0.5.7",
+    "ldrs": "^1.0.2",
     "next": "14.2.5",
     "prisma": "^5.17.0",
     "react": "^18",
     "react-dom": "^18",
-    "swr": "^2.2.5"
+    "swr": "^2.2.5",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -33,5 +37,9 @@
     "semi": false,
     "singleQuote": true,
     "trailingComma": "all"
+  },
+  "prisma": {
+    "schema": "database/schema.prisma",
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} database/seed.ts"
   }
 }

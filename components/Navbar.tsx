@@ -15,6 +15,7 @@ import {
   MagnifyingGlassIcon,
 } from '@heroicons/react/24/solid'
 import ProductsDropdown from './ProductsDropdown'
+import { useRouter } from 'next/navigation'
 
 const user = {
   name: 'Jozias Martini',
@@ -22,14 +23,14 @@ const user = {
 }
 
 const userNavigation = [
-  { name: 'Meu perfil', href: '#' },
-  { name: 'Configurações', href: '#' },
-  { name: 'Sair', href: '#' },
+  { name: 'Meu perfil', href: '/profile' },
+  { name: 'Configurações', href: '/settings' },
+  { name: 'Sair', href: '/logout' },
 ]
 
 const cartNavigation = [
-  { name: 'Meu carrinho', href: '#' },
-  { name: 'Compras anteriores', href: '#' },
+  { name: 'Meu carrinho', href: '/cart' },
+  { name: 'Compras anteriores', href: '/history' },
 ]
 
 type NavbarProps = {
@@ -37,6 +38,8 @@ type NavbarProps = {
 }
 
 export default function Navbar({ setSearchQuery }: NavbarProps) {
+  const router = useRouter()
+
   return (
     <>
       {/* When the mobile menu is open, add `overflow-hidden` to the `body` element to prevent double scrollbars */}
@@ -48,7 +51,7 @@ export default function Navbar({ setSearchQuery }: NavbarProps) {
           <div className="relative flex justify-between lg:gap-8 xl:grid xl:grid-cols-12">
             <div className="flex md:absolute md:inset-y-0 md:left-0 lg:static xl:col-span-2">
               <div className="flex flex-shrink-0 items-center">
-                <a href="#" className="font-bold tracking-tighter text-xl">
+                <a href="/" className="font-bold tracking-tighter text-xl">
                   COSMETICOS&CO
                 </a>
               </div>
@@ -115,12 +118,13 @@ export default function Navbar({ setSearchQuery }: NavbarProps) {
                 >
                   {cartNavigation.map((item) => (
                     <MenuItem key={item.name}>
-                      <a
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                      <li
+                        key={item.name}
+                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 cursor-pointer"
+                        onClick={() => router.push(item.href)}
                       >
                         {item.name}
-                      </a>
+                      </li>
                     </MenuItem>
                   ))}
                 </MenuItems>
@@ -141,12 +145,13 @@ export default function Navbar({ setSearchQuery }: NavbarProps) {
                 >
                   {userNavigation.map((item) => (
                     <MenuItem key={item.name}>
-                      <a
-                        href={item.href}
-                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
+                      <li
+                        key={item.name}
+                        className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100 cursor-pointer"
+                        onClick={() => router.push(item.href)}
                       >
                         {item.name}
-                      </a>
+                      </li>
                     </MenuItem>
                   ))}
                 </MenuItems>
@@ -180,13 +185,13 @@ export default function Navbar({ setSearchQuery }: NavbarProps) {
             </div>
             <div className="mx-auto mt-3 max-w-3xl space-y-1 px-2 sm:px-4">
               {userNavigation.map((item) => (
-                <a
+                <li
                   key={item.name}
-                  href={item.href}
-                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900 cursor-pointer"
+                  onClick={() => router.push(item.href)}
                 >
                   {item.name}
-                </a>
+                </li>
               ))}
             </div>
           </div>

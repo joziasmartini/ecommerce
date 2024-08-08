@@ -1,21 +1,42 @@
+import { useCartContext } from '@/contexts/cartContext'
 import { Product } from '@/types/product'
-import { StarIcon } from '@heroicons/react/24/solid'
+import { ShoppingCartIcon, StarIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
-import React from 'react'
+import { useState } from 'react'
 
 type CardProps = Product & {
   href: string
 }
 
 export default function Card({
+  id,
   name,
   description,
   image,
-  href,
   price,
   rating,
   discount,
 }: CardProps) {
+  const { addProduct } = useCartContext()
+  const [isProductAdded, setIsProductAdded] = useState(false)
+
+  const handleProductClick = (
+    id: number,
+    name: string,
+    price: number,
+    image: string,
+    description: string,
+    rating: number,
+    discount: number,
+  ) => {
+    addProduct({ id, name, price, image, description, rating, discount })
+
+    setIsProductAdded(true)
+    setTimeout(() => {
+      setIsProductAdded(false)
+    }, 1000)
+  }
+
   return (
     <div
       className={`group max-w-sm bg-white dark:bg-gray-800 dark:border-gray-700`}
@@ -51,6 +72,30 @@ export default function Card({
           <span className="text-neutral-300 line-through">
             R$ {price - discount}
           </span>
+        </div>
+        <div className="flex">
+          <button
+            onClick={() =>
+              handleProductClick(
+                id,
+                name,
+                price,
+                image,
+                description,
+                rating,
+                discount,
+              )
+            }
+            className="flex mt-4 bg-primary-500 text-orange-600 font-medium text-sm bg-orange-200 hover:bg-orange-600 hover:text-white transition-all duration-300 px-4 py-2 rounded-lg"
+          >
+            <span>Adicionar</span>{' '}
+            <ShoppingCartIcon className="h-4 w-4 ml-1 mt-0.5" />
+          </button>
+          {isProductAdded && (
+            <span className="ml-2 mt-6 text-orange-500 font-medium text-sm">
+              Adicionado!
+            </span>
+          )}
         </div>
       </div>
     </div>
