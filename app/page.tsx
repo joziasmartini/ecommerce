@@ -10,20 +10,17 @@ import useProducts from '@/hooks/useProducts'
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
-  const [filteredItems, setFilteredItems] = useState<any>([])
   const [visibleItemsCount, setVisibleItemsCount] = useState(4)
   const [isLoadMoreLoading, setIsLoadMoreLoading] = useState(false)
   const { products, error, isLoading } = useProducts()
 
   if (error) return <div>Erro ao carregar os produtos.</div>
 
-  if (searchQuery) {
-    const filtered = products?.filter((product: Product) =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()),
-    )
-    setFilteredItems(filtered)
-  }
-
+  const filteredItems = searchQuery
+    ? products?.filter((product: Product) =>
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+    : products
   const slicedItems = searchQuery
     ? filteredItems?.slice(0, visibleItemsCount)
     : products?.slice(0, visibleItemsCount)
