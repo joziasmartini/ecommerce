@@ -5,7 +5,7 @@ const prisma = new PrismaClient()
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: number } },
+  { params }: { params: { id: string } },
 ) {
   const { id } = params
 
@@ -32,7 +32,7 @@ export async function GET(
 
 export async function PATCH(
   req: NextRequest,
-  { params }: { params: { id: number } },
+  { params }: { params: { id: string } },
 ) {
   const { id } = params
   const body = await req.json()
@@ -87,7 +87,7 @@ export async function PATCH(
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: number } },
+  { params }: { params: { id: string } },
 ) {
   const { id } = params
 
