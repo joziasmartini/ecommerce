@@ -23,20 +23,23 @@ export default function CartPrice() {
         <span className="text-lg">Valor total: </span>
         <span className="text-lg font-bold">${totalPrice.toFixed(2)}</span>
       </div>
-      <div className="mb-4">
+      <div className="flex mb-4">
         <input
           type="text"
           value={voucher}
           onChange={handleVoucherChange}
-          placeholder="Insira seu cupom de desconto"
-          className="w-full p-2 border border-gray-300 rounded"
+          placeholder="Cupom"
+          className="w-full p-2 border border-gray-300 rounded-full px-4 focus:ring-2 focus:ring-orange-500"
         />
+        <button className="bg-black text-white py-3 font-medium ml-4 px-8 rounded-full w-40">
+          Aplicar
+        </button>
       </div>
       <button
         onClick={handlePayment}
-        className="w-full bg-green-500 text-white p-2 rounded"
+        className="w-full bg-orange-600 text-white font-medium py-3 rounded-full"
       >
-        Ir para o pagamento
+        Finalizar compra
       </button>
     </div>
   )

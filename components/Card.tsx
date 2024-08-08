@@ -1,8 +1,8 @@
 import { useCartContext } from '@/contexts/cartContext'
 import { Product } from '@/types/product'
-import { StarIcon } from '@heroicons/react/24/solid'
+import { ShoppingCartIcon, StarIcon } from '@heroicons/react/24/solid'
 import Image from 'next/image'
-import React from 'react'
+import { useState } from 'react'
 
 type CardProps = Product & {
   href: string
@@ -18,6 +18,24 @@ export default function Card({
   discount,
 }: CardProps) {
   const { addProduct } = useCartContext()
+  const [isProductAdded, setIsProductAdded] = useState(false)
+
+  const handleProductClick = (
+    id: number,
+    name: string,
+    price: number,
+    image: string,
+    description: string,
+    rating: number,
+    discount: number,
+  ) => {
+    addProduct({ id, name, price, image, description, rating, discount })
+
+    setIsProductAdded(true)
+    setTimeout(() => {
+      setIsProductAdded(false)
+    }, 1000)
+  }
 
   return (
     <div
@@ -55,10 +73,10 @@ export default function Card({
             R$ {price - discount}
           </span>
         </div>
-        <div>
+        <div className="flex">
           <button
             onClick={() =>
-              addProduct({
+              handleProductClick(
                 id,
                 name,
                 price,
@@ -66,12 +84,18 @@ export default function Card({
                 description,
                 rating,
                 discount,
-              })
+              )
             }
-            className="mt-4 bg-primary-500 text-orange-600 text-sm bg-orange-200 hover:bg-orange-600 hover:text-white transition-all duration-300 px-4 py-2 rounded-lg"
+            className="flex mt-4 bg-primary-500 text-orange-600 font-medium text-sm bg-orange-200 hover:bg-orange-600 hover:text-white transition-all duration-300 px-4 py-2 rounded-lg"
           >
-            Adicionar ao carrinho
+            <span>Adicionar</span>{' '}
+            <ShoppingCartIcon className="h-4 w-4 ml-1 mt-0.5" />
           </button>
+          {isProductAdded && (
+            <span className="ml-2 mt-6 text-orange-500 font-medium text-sm">
+              Adicionado!
+            </span>
+          )}
         </div>
       </div>
     </div>
