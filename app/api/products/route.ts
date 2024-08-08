@@ -13,9 +13,6 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ products: products, error: '' }, { status: 200 })
   } catch (error) {
-    return NextResponse.json(
-      { products: null, error: 'Internal error.' },
-      { status: 500 },
-    )
+    return NextResponse.json({ products: null, error: error }, { status: 500 })
   }
 }
