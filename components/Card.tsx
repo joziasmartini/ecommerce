@@ -42,7 +42,7 @@ export default function Card({
       className={`group max-w-sm bg-white dark:bg-gray-800 dark:border-gray-700`}
     >
       <Image
-        className="rounded-t-lg w-full h-64 object-cover rounded-lg transition-all duration-200 group-hover:filter group-hover:brightness-105"
+        className="rounded-t-lg w-full min-w-64 h-64 object-cover rounded-lg transition-all duration-200 group-hover:filter group-hover:brightness-105"
         src={'https://images.unsplash.com/photo-1542452255191-c85a98f2c5d1'}
         alt=""
         width={1000}

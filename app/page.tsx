@@ -14,6 +14,8 @@ export default function Home() {
   const [isLoadMoreLoading, setIsLoadMoreLoading] = useState(false)
   const { products, error, isLoading } = useProducts()
 
+  if (error) return <div>Erro ao carregar os produtos.</div>
+
   const filteredItems = searchQuery
     ? products?.filter((product: Product) =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase()),
@@ -25,28 +27,6 @@ export default function Home() {
   const hasMoreItems = searchQuery
     ? visibleItemsCount < filteredItems?.length
     : visibleItemsCount < products?.length
-
-  if (error) return <div>Erro ao carregar os produtos.</div>
-
-  // useEffect(() => {
-  //   setFilteredItems(
-  //     searchQuery
-  //       ? products?.filter((product: Product) =>
-  //           product.name.toLowerCase().includes(searchQuery.toLowerCase()),
-  //         )
-  //       : products,
-  //   )
-  //   setSlicedItems(
-  //     searchQuery
-  //       ? filteredItems?.slice(0, visibleItemsCount)
-  //       : products?.slice(0, visibleItemsCount),
-  //   )
-  //   setHasMoreItems(
-  //     searchQuery
-  //       ? visibleItemsCount < filteredItems?.length
-  //       : visibleItemsCount < products?.length,
-  //   )
-  // }, [searchQuery, products, visibleItemsCount, filteredItems])
 
   const loadMoreItems = () => {
     setIsLoadMoreLoading(true)
