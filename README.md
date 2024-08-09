@@ -1,4 +1,4 @@
-### E-commerce
+## Ecommerce
 
 Ecommerce platform for a technical test.
 
