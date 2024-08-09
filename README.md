@@ -10,6 +10,8 @@ Ecommerce platform for a technical test.
 - [TypeScript](https://www.typescriptlang.org/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [AWS](https://aws.amazon.com/)
+- [Prisma](https://www.prisma.io/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ### Running
 
@@ -18,16 +20,6 @@ Ecommerce platform for a technical test.
 - Run the project with `npm run dev`
 - Access the project at `http://localhost:3000`
 
-### To do
+### Deploy
 
-- [x] Home page navbar
-- [x] Home page hero section
-- [x] Home page product list
-- [x] Card component for products
-- [x] Product list and hooks
-- [x] Create and connect database
-- [ ] Load more button and its logic
-- [ ] Cart page and its components
-- [ ] Cart context and logic
-- [ ] Search context and logic
-- [ ] Adjust responsiveness
+The project is deployed on [AWS Amplify](https://aws.amazon.com/amplify/) and can be accessed at [this link](https://ecommerce.futuresystems.ai).

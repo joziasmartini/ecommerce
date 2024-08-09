@@ -3,20 +3,20 @@ import Image from 'next/image'
 
 export default function Hero() {
   return (
-    <div className="relative w-full overflow-auto">
+    <div className="relative w-full overflow-none">
       <Image
         src={Banner}
         alt="Banner"
         width={1349}
         height={431}
-        className="min-h-72"
+        className="md:h-full h-[300px] w-[100%] object-cover"
       />
-      <div className="absolute top-64 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <div className="flex flex-col justify-center items-center">
-          <h1 className="pb-4 font-bold text-4xl md:text-5xl text-center bg-neutral-100">
+          <h1 className="pb-4 font-bold text-4xl md:text-5xl text-center">
             Se joga no Arraiá
           </h1>
-          <h2 className="font-medium text-xl text-center bg-neutral-100">
+          <h2 className="font-medium text-lg md:text-xl text-center">
             Aproveite as festas com o melhor da maquiagem!
           </h2>
           <button

@@ -22,7 +22,7 @@ export default function HomeItemList({ items, isLoading }: HomeItemListProps) {
           <LineWobble size={64} speed={1.5} color="#ea580c" />
         </div>
       ) : (
-        <section className="grid lg:grid-cols-4 md:grid-cols-2 p-8 lg:w-[90%] gap-8 mx-auto">
+        <section className="grid lg:grid-cols-4 md:grid-cols-2 p-8 lg:w-[90%] gap-8 mx-auto justify-center">
           <>
             {items.map((product) => {
               return (

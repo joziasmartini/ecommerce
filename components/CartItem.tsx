@@ -16,7 +16,7 @@ export default function CartItem({
   removeProduct,
 }: CartItemProps) {
   return (
-    <div className="flex justify-between items-center p-4 border-b border-gray-100">
+    <div className="flex justify-between p-4 border-b border-gray-100">
       <div className="flex">
         <Image
           className="rounded-t-lg w-40 h-40 object-cover rounded-lg transition-all duration-200 group-hover:filter group-hover:brightness-105"
@@ -31,7 +31,7 @@ export default function CartItem({
           <p>${product.price.toFixed(2)}</p>
         </div>
       </div>
-      <div className="flex flex-col justify-between">
+      <div className="flex flex-col justify-between items-end">
         <button
           type="button"
           className="flex items-center rounded-full w-10 h-10 p-2.5 font-semibold text-red-600 hover:bg-orange-200"
@@ -41,7 +41,7 @@ export default function CartItem({
         </button>
         <button
           type="button"
-          className="rounded-full bg-orange-50 px-4 py-1 text-sm font-semibold text-orange-600 hover:bg-orange-200"
+          className="rounded-full bg-orange-50 px-4 py-1 text-sm font-semibold text-orange-600 hover:bg-orange-200 mb-3"
           onClick={() => addProduct(product)}
         >
           Adicionar Mais
