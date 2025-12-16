@@ -12,21 +12,20 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('')
   const [visibleItemsCount, setVisibleItemsCount] = useState(4)
   const [isLoadMoreLoading, setIsLoadMoreLoading] = useState(false)
-  const { products, error, isLoading } = useProducts()
+  const { products, isLoading } = useProducts()
 
-  if (error) return <div>Erro ao carregar os produtos.</div>
-
+  const safeProducts = products ?? []
   const filteredItems = searchQuery
-    ? products?.filter((product: Product) =>
+    ? safeProducts.filter((product: Product) =>
         product.name.toLowerCase().includes(searchQuery.toLowerCase()),
       )
-    : products
+    : safeProducts
   const slicedItems = searchQuery
-    ? filteredItems?.slice(0, visibleItemsCount)
-    : products?.slice(0, visibleItemsCount)
+    ? filteredItems.slice(0, visibleItemsCount)
+    : safeProducts.slice(0, visibleItemsCount)
   const hasMoreItems = searchQuery
-    ? visibleItemsCount < filteredItems?.length
-    : visibleItemsCount < products?.length
+    ? visibleItemsCount < filteredItems.length
+    : visibleItemsCount < safeProducts.length
 
   const loadMoreItems = () => {
     setIsLoadMoreLoading(true)
